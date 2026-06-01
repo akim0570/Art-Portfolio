@@ -27,7 +27,7 @@ body{
     font-size:20px;
 }
 
-/* GALLERY */
+/* ===== GALLERY ===== */
 .gallery{
     column-count:3;
     column-gap:15px;
@@ -35,9 +35,11 @@ body{
 }
 
 .item{
+    position:relative;
     margin-bottom:15px;
     break-inside:avoid;
     cursor:pointer;
+    overflow:hidden;
 }
 
 .item img{
@@ -46,12 +48,37 @@ body{
     transition:0.3s ease;
 }
 
-.item img:hover{
+.item:hover img{
     transform:scale(1.03);
     filter:brightness(1.1);
 }
 
-/* VIEWER */
+/* HOVER INFO */
+.hover-info{
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+
+    background:rgba(0,0,0,0.75);
+    color:white;
+
+    padding:10px;
+
+    font-size:13px;
+
+    opacity:0;
+    transform:translateY(10px);
+
+    transition:0.25s ease;
+}
+
+.item:hover .hover-info{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* ===== VIEWER ===== */
 .viewer{
     display:none;
     position:fixed;
@@ -71,6 +98,7 @@ body{
     max-height:80%;
 }
 
+/* CONTROLS */
 .controls{
     position:absolute;
     top:20px;
@@ -94,39 +122,68 @@ button{
 
 <div class="header">Alena’s Portfolio</div>
 
+<!-- ===== GALLERY ===== -->
 <div class="gallery">
 
 <div class="item" onclick="openViewer(0)">
 <img src="https://i.postimg.cc/3JDJhk8m/Alena-Kim-Labeled-Before-I-Speak-2.jpg">
+<div class="hover-info">
+<div>Labeled Before I Speak</div>
+<div>12” x 18”</div>
+</div>
 </div>
 
 <div class="item" onclick="openViewer(1)">
 <img src="https://i.postimg.cc/TPhTk14b/Ornament-Part-2.jpg">
+<div class="hover-info">
+<div>Duality of Holiday</div>
+<div>15” x 15”</div>
+</div>
 </div>
 
 <div class="item" onclick="openViewer(2)">
 <img src="https://i.postimg.cc/FHpKW2sh/Ritual-Korean-3.jpg">
+<div class="hover-info">
+<div>Ritual</div>
+<div>8.5” x 11”</div>
+</div>
 </div>
 
 <div class="item" onclick="openViewer(3)">
 <img src="https://i.postimg.cc/ncYVr6mz/Plant-3.jpg">
+<div class="hover-info">
+<div>Cultivating</div>
+<div>12” x 16”</div>
+</div>
 </div>
 
 <div class="item" onclick="openViewer(4)">
 <img src="https://i.postimg.cc/90HVFpFB/Alena-Kim-Preserved-2.jpg">
+<div class="hover-info">
+<div>Preserved</div>
+<div>15” x 15”</div>
+</div>
 </div>
 
 <div class="item" onclick="openViewer(5)">
 <img src="https://i.postimg.cc/zGGNB38Z/Suitcase-Falling-Out-2.jpg">
+<div class="hover-info">
+<div>Suitcase</div>
+<div>12” x 12”</div>
+</div>
 </div>
 
 <div class="item" onclick="openViewer(6)">
 <img src="https://i.postimg.cc/76GYLh18/Organized-2.jpg">
+<div class="hover-info">
+<div>Organized</div>
+<div>15” x 15”</div>
+</div>
 </div>
 
 </div>
 
-<!-- VIEWER -->
+<!-- ===== VIEWER ===== -->
 <div class="viewer" id="viewer">
 
 <div class="controls">
@@ -151,30 +208,30 @@ const artworks = [
 "https://i.postimg.cc/76GYLh18/Organized-2.jpg"
 ];
 
-let current=0;
+let current = 0;
 
 function openViewer(i){
-current=i;
-document.getElementById("viewer").style.display="flex";
-update();
+    current = i;
+    document.getElementById("viewer").style.display = "flex";
+    update();
 }
 
 function update(){
-document.getElementById("viewer-img").src=artworks[current];
+    document.getElementById("viewer-img").src = artworks[current];
 }
 
 function nextArt(){
-current=(current+1)%artworks.length;
-update();
+    current = (current + 1) % artworks.length;
+    update();
 }
 
 function prevArt(){
-current=(current-1+artworks.length)%artworks.length;
-update();
+    current = (current - 1 + artworks.length) % artworks.length;
+    update();
 }
 
 function closeViewer(){
-document.getElementById("viewer").style.display="none";
+    document.getElementById("viewer").style.display = "none";
 }
 
 </script>
