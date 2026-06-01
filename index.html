@@ -1,21 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alena Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Gelasio:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 <style>
-body {
-  background-image: url('https://d7hftxdivxxvm.cloudfront.net/?quality=85&resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F2RNK1P0BYVrSCZEy_Sd1Ew%252F3417757448_4a6bdf36ce_o.jpg&width=910');
-  background-repeat: no-repeat;
-  background-attachment: fixed;  
-  background-size: 100% 100%;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
+
+body{
+    height:100vh;
+    overflow:hidden;
+
+    background-image:url("https://i.postimg.cc/4NNtJb7Z/unnamed.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    font-family:'Gelasio', serif;
+    color:#000;
+}
+
+/* ===== CENTER WINDOW ===== */
+.center-window{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+
+    width:820px;
+    height:540px;
+
+    background:#fff;
+    border:1px solid #d0d0d0;
+    box-shadow:0 25px 60px rgba(0,0,0,.18);
+
+    display:flex;
+    flex-direction:column;
+}
+
+/* ✅ GREY-BLUE TOP BAR */
+.center-bar-main{
+    height:45px;
+    background:#b8c6d1;
+    border-bottom:1px solid #9fb2c1;
+
+    display:flex;
+    align-items:center;
+    padding-left:12px;
+
+    font-size:13px;
+    font-weight:500;
+}
+
+.center-content{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+h1{
+    font-size:48px;
+    font-weight:500;
+    margin-bottom:20px;
+}
+
+/* ICON MENU */
+.menu{
+    display:flex;
+    gap:45px;
+}
+
+.card{
+    cursor:pointer;
+    font-size:14px;
+}
+
+.icon{
+    width:85px;
+    height:85px;
+    background:#f2f2f2;
+    border-radius:18px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+/* ===== MINI WINDOWS ===== */
+.window{
+    display:none;
+    position:absolute;
+
+    width:420px;
+    height:280px;
+
+    background:white;
+    border:1px solid #cfd8e3;
+
+    box-shadow:0 25px 60px rgba(0,0,0,.25);
+
+    z-index:50;
+}
+
+/* GREY-BLUE TOP BAR (MATCHES MAIN) */
+.window-bar{
+    height:40px;
+    background:#b8c6d1;
+    border-bottom:1px solid #9fb2c1;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 10px;
+
+    font-size:13px;
+
+    cursor:grab;
+    user-select:none;
+}
+
+.window-content{
+    padding:15px;
+    font-size:14px;
+    color:#222;
+}
+
+.close{
+    width:24px;
+    height:24px;
+    border:none;
+    border-radius:50%;
+    background:#eee;
+    cursor:pointer;
+}
+
 </style>
 </head>
 
-  <h4>This is the main title of the page</h4>
-
 <body>
+
+<!-- ===== CENTER HUB ===== -->
+<div class="center-window">
+
+<div class="center-bar-main">🏠 main page</div>
+
+<div class="center-content">
+
+<h1>Welcome to Alena’s Portfolio</h1>
+
+<div class="menu">
+
+<!-- WORK -->
+<div class="card" onclick="window.location.href='work.html'">
+<div class="icon"><i class="fa-regular fa-folder-open"></i></div>
+work
+</div>
+
+<!-- ABOUT -->
+<div class="card" onclick="openWindow('about')">
+<div class="icon"><i class="fa-regular fa-user"></i></div>
+about
+</div>
+
+<!-- LINKS -->
+<div class="card" onclick="openWindow('links')">
+<div class="icon"><i class="fa-solid fa-link"></i></div>
+links
+</div>
+
+<!-- CONTACT -->
+<div class="card" onclick="openWindow('contact')">
+<div class="icon"><i class="fa-regular fa-envelope"></i></div>
+contact
+</div>
+
+</div>
+
+</div>
+</div>
+
+<!-- ===== ABOUT WINDOW ===== -->
+<div class="window" id="about" style="top:120px; left:120px;">
+<div class="window-bar">
+<span>about me</span>
+<button class="close" onclick="closeWindow('about')">×</button>
+</div>
+<div class="window-content">
+<p>
+Hi, I’m Alena — a Korean-American artist focused on identity, memory, and emotional storytelling through visual work.
+</p>
+</div>
+</div>
+
+<!-- ===== LINKS WINDOW ===== -->
+<div class="window" id="links" style="top:170px; left:220px;">
+<div class="window-bar">
+<span>links</span>
+<button class="close" onclick="closeWindow('links')">×</button>
+</div>
+<div class="window-content">
+<p>Instagram</p>
+<p>Behance</p>
+<p>Pinterest</p>
+<p>GitHub</p>
+</div>
+</div>
+
+<!-- ===== CONTACT WINDOW ===== -->
+<div class="window" id="contact" style="top:220px; left:320px;">
+<div class="window-bar">
+<span>contact</span>
+<button class="close" onclick="closeWindow('contact')">×</button>
+</div>
+<div class="window-content">
+<p>Email: your@email.com</p>
+</div>
+</div>
+
+<script>
+
+/* OPEN / CLOSE */
+function openWindow(id){
+document.getElementById(id).style.display="block";
+}
+
+function closeWindow(id){
+document.getElementById(id).style.display="none";
+}
+
+/* ===== DRAG SYSTEM ===== */
+let activeWindow = null;
+let offsetX = 0;
+let offsetY = 0;
+let zIndex = 100;
+
+document.addEventListener("mousedown", (e) => {
+if(e.target.closest(".window-bar")){
+activeWindow = e.target.closest(".window");
+
+const rect = activeWindow.getBoundingClientRect();
+
+offsetX = e.clientX - rect.left;
+offsetY = e.clientY - rect.top;
+
+activeWindow.style.zIndex = zIndex++;
+}
+});
+
+document.addEventListener("mousemove", (e) => {
+if(activeWindow){
+activeWindow.style.left = (e.clientX - offsetX) + "px";
+activeWindow.style.top = (e.clientY - offsetY) + "px";
+}
+});
+
+document.addEventListener("mouseup", () => {
+activeWindow = null;
+});
+
+</script>
+
+</body>
 </html>
