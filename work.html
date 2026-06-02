@@ -22,12 +22,25 @@ body{
 }
 
 /* HEADER */
+
 .header{
     padding:25px;
     font-size:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
-/* ===== GALLERY ===== */
+.back-btn{
+    background:white;
+    color:black;
+    text-decoration:none;
+    padding:8px 14px;
+    border-radius:6px;
+}
+
+/* GALLERY */
+
 .gallery{
     column-count:3;
     column-gap:15px;
@@ -50,27 +63,25 @@ body{
 
 .item:hover img{
     transform:scale(1.03);
-    filter:brightness(1.1);
+    filter:brightness(1.05);
 }
 
 /* HOVER INFO */
+
 .hover-info{
     position:absolute;
     bottom:0;
     left:0;
     right:0;
 
-    background:rgba(0,0,0,0.75);
-    color:white;
+    background:rgba(0,0,0,.75);
 
-    padding:10px;
-
-    font-size:13px;
+    padding:12px;
 
     opacity:0;
     transform:translateY(10px);
 
-    transition:0.25s ease;
+    transition:.25s;
 }
 
 .item:hover .hover-info{
@@ -78,41 +89,98 @@ body{
     transform:translateY(0);
 }
 
-/* ===== VIEWER ===== */
+/* VIEWER */
+
 .viewer{
     display:none;
+
     position:fixed;
     top:0;
     left:0;
+
     width:100%;
     height:100%;
-    background:rgba(0,0,0,0.95);
 
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
+    background:rgba(0,0,0,.95);
+
+    z-index:999;
 }
 
-.viewer img{
-    max-width:90%;
-    max-height:80%;
+.viewer-layout{
+    width:100%;
+    height:100%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:40px;
+
+    padding:50px;
+}
+
+.viewer-image{
+    flex:2;
+}
+
+.viewer-image img{
+    width:100%;
+    max-height:85vh;
+    object-fit:contain;
+}
+
+.viewer-info{
+    flex:1;
+    max-width:350px;
+}
+
+.viewer-info h2{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.viewer-size{
+    color:#bdbdbd;
+    margin-bottom:20px;
+}
+
+.viewer-description{
+    line-height:1.8;
 }
 
 /* CONTROLS */
+
 .controls{
     position:absolute;
     top:20px;
     right:20px;
+
     display:flex;
     gap:10px;
 }
 
-button{
+.controls button{
     border:none;
-    padding:8px 12px;
+    padding:10px 14px;
     cursor:pointer;
-    background:white;
     font-family:'Gelasio', serif;
+}
+
+@media(max-width:900px){
+
+.gallery{
+    column-count:1;
+}
+
+.viewer-layout{
+    flex-direction:column;
+    overflow:auto;
+}
+
+.viewer-info{
+    max-width:90%;
+}
+
 }
 
 </style>
@@ -120,118 +188,219 @@ button{
 
 <body>
 
-<div class="header">Alena’s Portfolio</div>
+<div class="header">
 
-<!-- ===== GALLERY ===== -->
+<div>Alena's Portfolio</div>
+
+<a href="index.html" class="back-btn">
+← Home
+</a>
+
+</div>
+
+<!-- GALLERY -->
+
 <div class="gallery">
 
 <div class="item" onclick="openViewer(0)">
 <img src="https://i.postimg.cc/3JDJhk8m/Alena-Kim-Labeled-Before-I-Speak-2.jpg">
 <div class="hover-info">
-<div>Labeled Before I                 Speak</div>
-<div>12” x 18”</div>
+<strong>Labeled Before I Speak</strong><br>
+12” × 18”
 </div>
 </div>
 
 <div class="item" onclick="openViewer(1)">
-<img src="https://i.postimg.cc/TPhTk14b/Ornament-Part-2.jpg" alt="Ornament Piece">
+<img src="https://i.postimg.cc/TPhTk14b/Ornament-Part-2.jpg">
 <div class="hover-info">
-<div>Duality of Holiday</div>
-<div>15” x 15”</div>
+<strong>Duality of Holiday</strong><br>
+15” × 15”
 </div>
 </div>
 
 <div class="item" onclick="openViewer(2)">
 <img src="https://i.postimg.cc/FHpKW2sh/Ritual-Korean-3.jpg">
 <div class="hover-info">
-<div>Ritual</div>
-<div>8.5” x 11”</div>
+<strong>Ritual</strong><br>
+8.5” × 11”
 </div>
 </div>
 
 <div class="item" onclick="openViewer(3)">
 <img src="https://i.postimg.cc/ncYVr6mz/Plant-3.jpg">
 <div class="hover-info">
-<div>Cultivating</div>
-<div>12” x 16”</div>
+<strong>Cultivating</strong><br>
+12” × 16”
 </div>
 </div>
 
 <div class="item" onclick="openViewer(4)">
 <img src="https://i.postimg.cc/90HVFpFB/Alena-Kim-Preserved-2.jpg">
 <div class="hover-info">
-<div>Preserved</div>
-<div>15” x 15”</div>
+<strong>Preserved</strong><br>
+15” × 15”
 </div>
 </div>
 
 <div class="item" onclick="openViewer(5)">
 <img src="https://i.postimg.cc/zGGNB38Z/Suitcase-Falling-Out-2.jpg">
 <div class="hover-info">
-<div>Suitcase</div>
-<div>12” x 12”</div>
+<strong>Suitcase</strong><br>
+12” × 12”
 </div>
 </div>
 
 <div class="item" onclick="openViewer(6)">
 <img src="https://i.postimg.cc/76GYLh18/Organized-2.jpg">
 <div class="hover-info">
-<div>Organized</div>
-<div>15” x 15”</div>
+<strong>Organized</strong><br>
+15” × 15”
 </div>
 </div>
 
 </div>
 
-<!-- ===== VIEWER ===== -->
+<!-- VIEWER -->
+
 <div class="viewer" id="viewer">
 
 <div class="controls">
-<button onclick="prevArt()">‹</button>
-<button onclick="nextArt()">›</button>
-<button onclick="closeViewer()">✕</button>
+<button onclick="prevArt()">‹ Previous</button>
+<button onclick="nextArt()">Next ›</button>
+<button onclick="closeViewer()">✕ Close</button>
 </div>
 
+<div class="viewer-layout">
+
+<div class="viewer-image">
 <img id="viewer-img">
+</div>
+
+<div class="viewer-info">
+
+<h2 id="viewer-title"></h2>
+
+<div class="viewer-size" id="viewer-size"></div>
+
+<p class="viewer-description" id="viewer-description"></p>
+
+</div>
+
+</div>
 
 </div>
 
 <script>
 
 const artworks = [
-"https://i.postimg.cc/3JDJhk8m/Alena-Kim-Labeled-Before-I-Speak-2.jpg",
-"https://i.postimg.cc/TPhTk14b/Ornament-Part-2.jpg",
-"https://i.postimg.cc/FHpKW2sh/Ritual-Korean-3.jpg",
-"https://i.postimg.cc/ncYVr6mz/Plant-3.jpg",
-"https://i.postimg.cc/90HVFpFB/Alena-Kim-Preserved-2.jpg",
-"https://i.postimg.cc/zGGNB38Z/Suitcase-Falling-Out-2.jpg",
-"https://i.postimg.cc/76GYLh18/Organized-2.jpg"
+
+{
+title:"Labeled Before I Speak",
+size:"12” × 18”",
+img:"https://i.postimg.cc/B6qtfwGK/Name-Tags-2.jpg",
+description:"Explores the experience of being judged through stereotypes and assumptions before having the opportunity to speak for oneself."
+},
+
+{
+title:"Duality of Holiday",
+size:"15” × 15”",
+img:"https://i.postimg.cc/TPhTk14b/Ornament-Part-2.jpg",
+description:"Examines the balance between celebration, tradition, and cultural identity through familiar holiday imagery."
+},
+
+{
+title:"Ritual",
+size:"8.5” × 11”",
+img:"https://i.postimg.cc/FHpKW2sh/Ritual-Korean-3.jpg",
+description:"Reflects the everyday traditions and customs that connect generations within Korean culture."
+},
+
+{
+title:"Cultivating",
+size:"12” × 16”",
+img:"https://i.postimg.cc/ncYVr6mz/Plant-3.jpg",
+description:"Uses growth as a metaphor for personal development, identity, and the influence of family roots."
+},
+
+{
+title:"Preserved",
+size:"15” × 15”",
+img:"https://i.postimg.cc/90HVFpFB/Alena-Kim-Preserved-2.jpg",
+description:"Represents the effort to protect memories, traditions, and cultural connections across time."
+},
+
+{
+title:"Suitcase",
+size:"12” × 12”",
+img:"https://i.postimg.cc/zGGNB38Z/Suitcase-Falling-Out-2.jpg",
+description:"Explores migration, family history, and the experiences carried from one generation to the next."
+},
+
+{
+title:"Organized",
+size:"15” × 15”",
+img:"https://i.postimg.cc/76GYLh18/Organized-2.jpg",
+description:"Examines structure, expectations, and the pressure to fit into predefined categories."
+}
+
 ];
 
 let current = 0;
 
-function openViewer(i){
-    current = i;
-    document.getElementById("viewer").style.display = "flex";
-    update();
+function openViewer(index){
+
+current = index;
+
+document.getElementById("viewer").style.display = "block";
+
+updateViewer();
+
 }
 
-function update(){
-    document.getElementById("viewer-img").src = artworks[current];
+function updateViewer(){
+
+document.getElementById("viewer-img").src =
+artworks[current].img;
+
+document.getElementById("viewer-title").innerText =
+artworks[current].title;
+
+document.getElementById("viewer-size").innerText =
+artworks[current].size;
+
+document.getElementById("viewer-description").innerText =
+artworks[current].description;
+
 }
 
 function nextArt(){
-    current = (current + 1) % artworks.length;
-    update();
+
+current++;
+
+if(current >= artworks.length){
+current = 0;
+}
+
+updateViewer();
+
 }
 
 function prevArt(){
-    current = (current - 1 + artworks.length) % artworks.length;
-    update();
+
+current--;
+
+if(current < 0){
+current = artworks.length - 1;
+}
+
+updateViewer();
+
 }
 
 function closeViewer(){
-    document.getElementById("viewer").style.display = "none";
+
+document.getElementById("viewer").style.display = "none";
+
 }
 
 </script>
