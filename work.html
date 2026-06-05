@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alena Portfolio - Work</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Gelasio:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
@@ -16,7 +17,7 @@
 }
 
 body{
-    font-family:'Gelasio', serif;
+    font-family:'Josefin Sans', sans-serif;
     background:#0f0f0f;
     color:white;
 }
@@ -26,6 +27,9 @@ body{
 .header{
     padding:25px;
     font-size:20px;
+    font-weight:300;
+    letter-spacing:1px;
+
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -37,6 +41,7 @@ body{
     text-decoration:none;
     padding:8px 14px;
     border-radius:6px;
+    font-family:'Josefin Sans', sans-serif;
 }
 
 /* GALLERY */
@@ -75,7 +80,6 @@ body{
     right:0;
 
     background:rgba(0,0,0,.75);
-
     padding:12px;
 
     opacity:0;
@@ -115,7 +119,6 @@ body{
     justify-content:center;
 
     gap:40px;
-
     padding:50px;
 }
 
@@ -132,20 +135,27 @@ body{
 .viewer-info{
     flex:1;
     max-width:350px;
+    font-family:'Josefin Sans', sans-serif;
 }
 
 .viewer-info h2{
-    font-size:32px;
+    font-size:34px;
+    font-weight:400;
+    letter-spacing:1px;
     margin-bottom:10px;
 }
 
 .viewer-size{
     color:#bdbdbd;
-    margin-bottom:20px;
+    margin-bottom:18px;
+    font-size:15px;
 }
 
 .viewer-description{
-    line-height:1.8;
+    line-height:1.9;
+    font-size:16px;
+    font-weight:300;
+    color:#eaeaea;
 }
 
 /* CONTROLS */
@@ -163,8 +173,10 @@ body{
     border:none;
     padding:10px 14px;
     cursor:pointer;
-    font-family:'Gelasio', serif;
+    font-family:'Josefin Sans', sans-serif;
 }
+
+/* MOBILE */
 
 @media(max-width:900px){
 
@@ -192,9 +204,7 @@ body{
 
 <div>Alena's Portfolio</div>
 
-<a href="index.html" class="back-btn">
-← Home
-</a>
+<a href="index.html" class="back-btn">← Home</a>
 
 </div>
 
@@ -279,9 +289,7 @@ body{
 <div class="viewer-info">
 
 <h2 id="viewer-title"></h2>
-
 <div class="viewer-size" id="viewer-size"></div>
-
 <p class="viewer-description" id="viewer-description"></p>
 
 </div>
@@ -293,114 +301,79 @@ body{
 <script>
 
 const artworks = [
-
 {
 title:"Labeled Before I Speak",
 size:"12” × 18”",
 img:"https://i.postimg.cc/B6qtfwGK/Name-Tags-2.jpg",
 description:"Explores the experience of being judged through stereotypes and assumptions before having the opportunity to speak for oneself."
 },
-
 {
 title:"Duality of Holiday",
 size:"15” × 15”",
 img:"https://i.postimg.cc/TPhTk14b/Ornament-Part-2.jpg",
 description:"Examines the balance between celebration, tradition, and cultural identity through familiar holiday imagery."
 },
-
 {
 title:"Ritual",
 size:"8.5” × 11”",
 img:"https://i.postimg.cc/FHpKW2sh/Ritual-Korean-3.jpg",
 description:"Reflects the everyday traditions and customs that connect generations within Korean culture."
 },
-
 {
 title:"Cultivating",
 size:"12” × 16”",
 img:"https://i.postimg.cc/ncYVr6mz/Plant-3.jpg",
 description:"Uses growth as a metaphor for personal development, identity, and the influence of family roots."
 },
-
 {
 title:"Preserved",
 size:"15” × 15”",
 img:"https://i.postimg.cc/90HVFpFB/Alena-Kim-Preserved-2.jpg",
 description:"Represents the effort to protect memories, traditions, and cultural connections across time."
 },
-
 {
 title:"Suitcase",
 size:"12” × 12”",
 img:"https://i.postimg.cc/zGGNB38Z/Suitcase-Falling-Out-2.jpg",
 description:"Explores migration, family history, and the experiences carried from one generation to the next."
 },
-
 {
 title:"Organized",
 size:"15” × 15”",
 img:"https://i.postimg.cc/76GYLh18/Organized-2.jpg",
 description:"Examines structure, expectations, and the pressure to fit into predefined categories."
 }
-
 ];
 
 let current = 0;
 
 function openViewer(index){
-
 current = index;
-
 document.getElementById("viewer").style.display = "block";
-
 updateViewer();
-
 }
 
 function updateViewer(){
-
-document.getElementById("viewer-img").src =
-artworks[current].img;
-
-document.getElementById("viewer-title").innerText =
-artworks[current].title;
-
-document.getElementById("viewer-size").innerText =
-artworks[current].size;
-
-document.getElementById("viewer-description").innerText =
-artworks[current].description;
-
+document.getElementById("viewer-img").src = artworks[current].img;
+document.getElementById("viewer-title").innerText = artworks[current].title;
+document.getElementById("viewer-size").innerText = artworks[current].size;
+document.getElementById("viewer-description").innerText = artworks[current].description;
 }
 
 function nextArt(){
-
 current++;
-
-if(current >= artworks.length){
-current = 0;
-}
-
+if(current >= artworks.length) current = 0;
 updateViewer();
-
 }
 
 function prevArt(){
-
 current--;
-
-if(current < 0){
-current = artworks.length - 1;
-}
-
+if(current < 0) current = artworks.length - 1;
 updateViewer();
-
 }
 
 function closeViewer(){
-
 document.getElementById("viewer").style.display = "none";
-
 }
 
 </script>

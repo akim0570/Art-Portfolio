@@ -5,7 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alena's Portfolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Metamorphous&family=Story+Script&display=swap" rel="stylesheet">
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 <style>
 
 *{
@@ -17,34 +22,29 @@
 body{
     height:100vh;
     overflow:hidden;
+    font-family:"Josefin Sans", sans-serif;
 
     background-image:url("https://i.postimg.cc/4NNtJb7Z/unnamed.jpg");
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
-
-  .story-script-regular {
-  font-family: "Story Script", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  color:#000;
-
 }
 
-}
+/* ===== MAIN WINDOW ===== */
 
-/* ===== CENTER WINDOW ===== */
 .center-window{
     position:absolute;
     top:50%;
     left:50%;
-    transform:translate(-50%, -50%);
+    transform:translate(-50%,-50%);
 
     width:820px;
     height:540px;
 
-    background:#fff;
+    background:white;
+
     border:1px solid #d0d0d0;
+
     box-shadow:0 25px 60px rgba(0,0,0,.18);
 
     display:flex;
@@ -53,66 +53,92 @@ body{
 
 .center-bar-main{
     height:45px;
+
     background:#b8c6d1;
+
     border-bottom:1px solid #9fb2c1;
 
     display:flex;
     align-items:center;
-    padding-left:12px;
 
-    font-size:13px;
+    padding-left:14px;
+
+    font-size:14px;
     font-weight:500;
 }
 
 .center-content{
     flex:1;
+
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
+
     text-align:center;
 }
 
 h1{
-    font-size:48px;
-    font-weight:500;
-    margin-bottom:20px;
+    font-size:72px;
+    font-weight:300;
+    letter-spacing:2px;
+
+    margin-bottom:40px;
+
+    color:#111;
 }
 
-/* ICON MENU */
+/* ===== MENU ===== */
+
 .menu{
     display:flex;
-    gap:45px;
+    gap:50px;
 }
 
 .card{
     cursor:pointer;
-    font-size:14px;
+    transition:0.25s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
 }
 
 .icon{
-    width:85px;
-    height:85px;
-    background:#f2f2f2;
+    width:90px;
+    height:90px;
+
+    background:#f4f4f4;
+
+    border:1px solid #e5e5e5;
+
     border-radius:18px;
 
     display:flex;
     justify-content:center;
     align-items:center;
 
-    font-size:30px;
-    margin-bottom:8px;
+    font-size:32px;
+
+    margin-bottom:10px;
 }
 
-/* ===== MINI WINDOWS ===== */
+.card p{
+    font-size:15px;
+}
+
+/* ===== POPUP WINDOWS ===== */
+
 .window{
     display:none;
+
     position:absolute;
 
-    width:420px;
-    height:280px;
+    width:430px;
+    height:290px;
 
     background:white;
+
     border:1px solid #cfd8e3;
 
     box-shadow:0 25px 60px rgba(0,0,0,.25);
@@ -122,24 +148,30 @@ h1{
 
 .window-bar{
     height:40px;
+
     background:#b8c6d1;
+
     border-bottom:1px solid #9fb2c1;
 
     display:flex;
     justify-content:space-between;
     align-items:center;
 
-    padding:0 10px;
-
-    font-size:13px;
+    padding:0 12px;
 
     cursor:grab;
     user-select:none;
+
+    font-size:14px;
 }
 
 .window-content{
-    padding:15px;
-    font-size:14px;
+    padding:18px;
+
+    line-height:1.8;
+
+    font-size:15px;
+
     color:#222;
 }
 
@@ -155,10 +187,34 @@ h1{
 .close{
     width:24px;
     height:24px;
+
     border:none;
     border-radius:50%;
-    background:#eee;
+
+    background:#ececec;
+
     cursor:pointer;
+}
+
+/* ===== MOBILE ===== */
+
+@media(max-width:900px){
+
+.center-window{
+    width:95%;
+    height:auto;
+    min-height:500px;
+}
+
+.menu{
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+h1{
+    font-size:48px;
+}
+
 }
 
 </style>
@@ -166,131 +222,188 @@ h1{
 
 <body>
 
-<!-- ===== CENTER HUB ===== -->
+<!-- MAIN WINDOW -->
+
 <div class="center-window">
 
-<div class="center-bar-main">🏠 main page</div>
+    <div class="center-bar-main">
+        🏠 Main Page
+    </div>
 
-<div class="center-content">
+    <div class="center-content">
 
-<h1>Welcome to Alena’s Portfolio</h1>
+        <h1>Welcome to Alena's Portfolio</h1>
 
-<div class="menu">
+        <div class="menu">
 
-<!-- WORK -->
-<div class="card" onclick="window.location.href='work.html'">
-<div class="icon"><i class="fa-regular fa-folder-open"></i></div>
-work
+            <!-- WORK -->
+            <div class="card" onclick="window.location.href='work.html'">
+                <div class="icon">
+                    <i class="fa-regular fa-folder-open"></i>
+                </div>
+                <p>Work</p>
+            </div>
+
+            <!-- ABOUT -->
+            <div class="card" onclick="openWindow('about')">
+                <div class="icon">
+                    <i class="fa-regular fa-user"></i>
+                </div>
+                <p>About</p>
+            </div>
+
+            <!-- LINKS -->
+            <div class="card" onclick="openWindow('links')">
+                <div class="icon">
+                    <i class="fa-solid fa-link"></i>
+                </div>
+                <p>Links</p>
+            </div>
+
+            <!-- CONTACT -->
+            <div class="card" onclick="openWindow('contact')">
+                <div class="icon">
+                    <i class="fa-regular fa-envelope"></i>
+                </div>
+                <p>Contact</p>
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
 
 <!-- ABOUT -->
-<div class="card" onclick="openWindow('about')">
-<div class="icon"><i class="fa-regular fa-user"></i></div>
-about
+
+<div class="window" id="about" style="top:120px; left:120px;">
+
+    <div class="window-bar">
+        <span>About Me</span>
+        <button class="close" onclick="closeWindow('about')">×</button>
+    </div>
+
+    <div class="window-content">
+        <p>
+            Hi, my name is Alena. I am an artist from La Crescenta, California.
+            My work explores Korean-American identity, cultural heritage,
+            emotional memory, and personal experiences through visual storytelling.
+        </p>
+    </div>
+
 </div>
 
 <!-- LINKS -->
-<div class="card" onclick="openWindow('links')">
-<div class="icon"><i class="fa-solid fa-link"></i></div>
-links
+
+<div class="window" id="links" style="top:170px; left:220px;">
+
+    <div class="window-bar">
+        <span>Links</span>
+        <button class="close" onclick="closeWindow('links')">×</button>
+    </div>
+
+    <div class="window-content">
+
+        <p>
+            <a href="https://www.instagram.com/" target="_blank">
+                Instagram
+            </a>
+        </p>
+
+        <br>
+
+        <p>
+            <a href="https://www.pinterest.com/" target="_blank">
+                Pinterest
+            </a>
+        </p>
+
+        <br>
+
+        <p>
+            <a href="https://github.com/akim0570/Art-Portfolio.git" target="_blank">
+                GitHub
+            </a>
+        </p>
+
+    </div>
+
 </div>
 
 <!-- CONTACT -->
-<div class="card" onclick="openWindow('contact')">
-<div class="icon"><i class="fa-regular fa-envelope"></i></div>
-contact
-</div>
 
-</div>
-
-</div>
-</div>
-
-<!-- ===== ABOUT WINDOW ===== -->
-<div class="window" id="about" style="top:120px; left:120px;">
-<div class="window-bar">
-<span>about me</span>
-<button class="close" onclick="closeWindow('about')">×</button>
-</div>
-<div class="window-content">
-<p>
-Hi, my name is Alena - I am an upcoming artist from La Crescenta. My work currently focuses on my Korean-American heritage and what it means to my identity. Keep exploring to learn more about me!
-</p>
-</div>
-</div>
-
-<!-- ===== LINKS WINDOW ===== -->
-<div class="window" id="links" style="top:170px; left:220px;">
-<div class="window-bar">
-<span>links</span>
-<button class="close" onclick="closeWindow('links')">×</button>
-</div>
-
-<div class="window-content">
-<p><a href="https://www.instagram.com/" target="_blank">Instagram</a></p>
-<p><a href="https://www.pinterest.com/" target="_blank">Pinterest</a></p>
-<p><a href="https://github.com/akim0570/Art-Portfolio.git" target="_blank">GitHub</a></p>
-</div>
-</div>
-
-<!-- ===== CONTACT WINDOW ===== -->
 <div class="window" id="contact" style="top:220px; left:320px;">
-<div class="window-bar">
-<span>contact</span>
-<button class="close" onclick="closeWindow('contact')">×</button>
-</div>
 
-<div class="window-content">
-<p>
-Email:
-<a href="mailto:akim0570@stu.gusd.net">
-akim0570@stu.gusd.net
-</a>
-</p>
-</div>
+    <div class="window-bar">
+        <span>Contact</span>
+        <button class="close" onclick="closeWindow('contact')">×</button>
+    </div>
+
+    <div class="window-content">
+
+        <p>
+            Email:
+            <a href="mailto:akim0570@stu.gusd.net">
+                akim0570@stu.gusd.net
+            </a>
+        </p>
+
+    </div>
+
 </div>
 
 <script>
 
 function openWindow(id){
-document.getElementById(id).style.display="block";
+    document.getElementById(id).style.display = "block";
 }
 
 function closeWindow(id){
-document.getElementById(id).style.display="none";
+    document.getElementById(id).style.display = "none";
 }
 
-/* DRAG SYSTEM */
+/* Dragging Windows */
+
 let activeWindow = null;
 let offsetX = 0;
 let offsetY = 0;
 let zIndex = 100;
 
 document.addEventListener("mousedown", (e) => {
-if(e.target.closest(".window-bar")){
-activeWindow = e.target.closest(".window");
 
-const rect = activeWindow.getBoundingClientRect();
+    if(e.target.closest(".window-bar")){
 
-offsetX = e.clientX - rect.left;
-offsetY = e.clientY - rect.top;
+        activeWindow = e.target.closest(".window");
 
-activeWindow.style.zIndex = zIndex++;
-}
+        const rect = activeWindow.getBoundingClientRect();
+
+        offsetX = e.clientX - rect.left;
+        offsetY = e.clientY - rect.top;
+
+        activeWindow.style.zIndex = zIndex++;
+    }
+
 });
 
 document.addEventListener("mousemove", (e) => {
-if(activeWindow){
-activeWindow.style.left = (e.clientX - offsetX) + "px";
-activeWindow.style.top = (e.clientY - offsetY) + "px";
-}
+
+    if(activeWindow){
+
+        activeWindow.style.left =
+            (e.clientX - offsetX) + "px";
+
+        activeWindow.style.top =
+            (e.clientY - offsetY) + "px";
+    }
+
 });
 
 document.addEventListener("mouseup", () => {
-activeWindow = null;
+    activeWindow = null;
 });
 
 </script>
 
 </body>
 </html>
+
